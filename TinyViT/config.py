@@ -74,12 +74,31 @@ _C.MODEL.TINY_VIT.MLP_RATIO = 4.
 _C.MODEL.TINY_VIT.MBCONV_EXPAND_RATIO = 4.0
 _C.MODEL.TINY_VIT.LOCAL_CONV_SIZE = 3
 
+# Hiera Model
+_C.MODEL.Hiera = CN()
+_C.MODEL.Hiera.embed_dim = 96
+_C.MODEL.Hiera.num_heads = 1
+_C.MODEL.Hiera.drop_path_rate = 0.0
+_C.MODEL.Hiera.q_pool = 3
+_C.MODEL.Hiera.q_stride = (2, 2)
+_C.MODEL.Hiera.stages = (2,3,16,3)
+_C.MODEL.Hiera.dim_mul = 2.0
+_C.MODEL.Hiera.head_mul = 2.0
+_C.MODEL.Hiera.window_pos_embed_bkg_spatial_size = (14, 14)
+_C.MODEL.Hiera.window_spec = (8, 4, 14, 7)
+_C.MODEL.Hiera.global_att_blocks = (12, 16, 20)
+_C.MODEL.Hiera.weights_path = None
+_C.MODEL.Hiera.return_interm_layers = True
+
 # DISTILL
 _C.DISTILL = CN()
 _C.DISTILL.ENABLED = False
 _C.DISTILL.TEACHER_LOGITS_PATH = ''
 _C.DISTILL.SAVE_TEACHER_LOGITS = False
 _C.DISTILL.LOGITS_TOPK = 100
+
+# GPU or CPU model
+_C.GPU = False
 
 # -----------------------------------------------------------------------------
 # Training settings

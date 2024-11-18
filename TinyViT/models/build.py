@@ -33,6 +33,11 @@ def build_model(config):
             "num_classes": config.MODEL.NUM_CLASSES,
         }
         model = CLIP(**kwargs)
+    
+    elif model_type == 'hiera':
+        from .hieradet import Hiera
+        M = config.MODEL.Hiera
+        model = Hiera(**M)
     else:
         raise NotImplementedError(f"Unkown model: {model_type}")
 

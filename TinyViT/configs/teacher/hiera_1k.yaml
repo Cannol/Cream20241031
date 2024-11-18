@@ -1,0 +1,46 @@
+GPU: true
+
+MODEL:
+  TYPE: hiera
+
+  Hiera:
+    embed_dim: 96
+    num_heads: 1
+    drop_path_rate: 0.0
+    q_pool: 3
+    q_stride: (2, 2)
+    stages: (2,3,16,3)
+    dim_mul: 2.0
+    head_mul: 2.0
+    window_pos_embed_bkg_spatial_size: (14,14)
+    window_spec: (8,4,14,7)
+    global_att_blocks: (12,16,20)
+    weights_path: none
+    return_interm_layers: true
+
+TRAIN:
+  EPOCHS: 90
+
+DATA:
+
+  BATCH_SIZE: 1
+  DATASET: imagenet
+  DATA_PATH: /mnt/sfs_a/czc/public_dataset/ImageNet-1K
+  DEBUG: false
+  FNAME_FORMAT: '{}.jpeg'
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  MEAN_AND_STD_TYPE: clip
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+
+DISTILL:
+  ENABLED: true
+  LOGITS_TOPK: 100
+  SAVE_TEACHER_LOGITS: true
+  TEACHER_LOGITS_PATH: ./teacher_logits/
+
+AUG:
+  MIXUP: 0.0
+  CUTMIX: 0.0
+

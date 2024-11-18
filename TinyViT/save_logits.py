@@ -123,7 +123,7 @@ def save_logits_one_epoch(config, model, data_loader, epoch, mixup_fn):
         else:
             original_targets = targets
 
-        with torch.cuda.amp.autocast(enabled=config.AMP_ENABLE):
+        with torch.amp.autocast("cuda", enabled=config.AMP_ENABLE):
             outputs = model(samples)
 
         acc1, acc5 = accuracy(outputs, original_targets, topk=(1, 5))
